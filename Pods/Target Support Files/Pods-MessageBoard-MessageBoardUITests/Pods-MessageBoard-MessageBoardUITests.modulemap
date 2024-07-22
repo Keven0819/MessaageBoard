@@ -1,0 +1,6 @@
+framework module Pods_MessageBoard_MessageBoardUITests {
+  umbrella header "Pods-MessageBoard-MessageBoardUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}
