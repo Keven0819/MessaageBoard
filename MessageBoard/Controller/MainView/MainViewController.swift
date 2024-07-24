@@ -144,12 +144,19 @@ class MainViewController: UIViewController {
     }
     
     func deleteMessage(_ message: MessageBoard, at indexPath: IndexPath) {
-        let realm = try! Realm()
-        try! realm.write {
-            realm.delete(message)
+        let alertController = UIAlertController(title: "刪除", message: "確定刪除嗎", preferredStyle: .alert)
+        let deleteAction = UIAlertAction(title: "確定", style:  .default) { [weak self] _ in
+            let realm = try! Realm()
+            try! realm.write {
+                realm.delete(message)
+            }
+            self?.messageArray.remove(at: indexPath.row)
+            self?.tbvTest.deleteRows(at: [indexPath], with: .fade)
         }
-        messageArray.remove(at: indexPath.row)
-        tbvTest.deleteRows(at: [indexPath], with: .fade)
+        let cancelAction = UIAlertAction(title: "取消", style: .cancel, handler: nil)
+        alertController.addAction(deleteAction)
+        alertController.addAction(cancelAction)
+        present(alertController, animated: true, completion: nil)
     }
     
     func showSortOptions() {
