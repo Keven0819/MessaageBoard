@@ -22,7 +22,6 @@ class MainTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         lbTest.numberOfLines = 0 // 多行顯示
-        lbTest.lineBreakMode = .byWordWrapping //利用單詞換行
         
     }
 
